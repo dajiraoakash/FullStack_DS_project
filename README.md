@@ -5,11 +5,11 @@ End-to-End Machine Learning project implementation with Python.
 ## Project Structure
 
 flowchart TD
-A["FullStack_DS_project"] --> B[".gitignore"]
-A --> C["README.md"]
-A --> D["requirements.txt"]
-A --> E["setup.py"]
-A --> F["src/"]
+    A["FullStack_DS_project"] --> B[".gitignore"]
+    A --> C["README.md"]
+    A --> D["requirements.txt"]
+    A --> E["setup.py"]
+    A --> F["src/"]
 
 
 ### File Descriptions
