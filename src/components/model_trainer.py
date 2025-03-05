@@ -28,6 +28,27 @@ class ModelTrainer:
         self.model_trainer_config=ModelTrainerConfig()
 
     def initiate_model_training(self,train_array,test_array,preprcessor_path):
+        try:
+            X_train,y_train,X_test,y_test=(
+                train_array[:,:-1],
+                train_array[:,-1],
+                test_array[:,:-1],
+                test_array[:,-1]
+            )
+
+            models = {
+                "Random Forest": RandomForestRegressor(),
+                "Decision Tree": DecisionTreeRegressor(),
+                "Gradient Bossting": GradientBoostingRegressor(),
+                "Linear Regression": LinearRegression(),
+                "K-Neighbors Classifier": KNeighborsRegressor(),
+                "XGBClassifier": XGBRegressor(),
+                "CatBoosting Classifier": CatBoostRegressor(verbose=False),
+                "AdaBoost Classifier": AdaBoostRegressor(),
+            }
+
+        except Exception as e:
+            raise CustomException(e,sys)
 
 
 
@@ -37,4 +58,4 @@ class ModelTrainer:
 
 
 
-        
+
