@@ -3,16 +3,26 @@ import os
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import load_object
-from dataclasses import dataclass
+import pandas as pd
 
 
 class PredictPipeline:
     def __init__(self):
         pass
+
     def predict(self,features):
-        model_path="artifacts/model.pkl"
-        preprocessor_path="artifacts/preprocessor.pkl"
-        model=load_object(file_path=model_path)
+        try:
+            model_path="artifacts/model.pkl"
+            preprocessor_path="artifacts/preprocessor.pkl"
+            model=load_object(file_path=model_path)
+            preprocessor=load_object(file_path=preprocessor_path)
+            scaled_data=preprocessor.transform(features)
+            preds=model.predict(scaled_data)
+
+            return preds
+
+        except Exception as e:
+            raise CustomException(e, sys)
 
 class CustomData:
     def __init__(self,
