@@ -21,4 +21,4 @@ def predict_datapoint():
     if request.method=="GET":
         reurn render_template("home.html")
     else:
-        pass
+        
