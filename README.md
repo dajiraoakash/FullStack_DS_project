@@ -1,46 +1,61 @@
 # FullStack Data Science Project
 
-End-to-End Machine Learning project implementation with Python.
-
 ## Project Overview
 
-This project aims to provide a comprehensive implementation of a full-stack data science project using Python. It includes data preprocessing, model training, evaluation, and deployment. The project is structured to facilitate easy navigation and understanding of each component involved in the machine learning pipeline.
+This project implements an end-to-end machine learning pipeline for predicting student performance. It includes data ingestion, exploratory data analysis (EDA), data transformation, model training, and deployment. The goal is to automate the entire workflow from raw data to actionable insights and predictions.
+
+---
 
 ## Project Structure
 
 ```mermaid
 flowchart TD
-    A["FullStack_DS_project"] --> B[".gitignore"]
-    A --> C["README.md"]
-    A --> D["requirements.txt"]
-    A --> E["setup.py"]
-    A --> F["src/"]
-    A --> G["venv/"]
+    A["FullStack_DS_project"] --> B["Notebook/"]
+    A --> C["src/"]
+    A --> D["templates/"]
+    A --> E["artifacts/"]
+    A --> F["README.md"]
+    A --> G["requirements.txt"]
 ```
 
-### File Descriptions
+### Key Directories and Files
 
-#### Core Files
+- **Notebook/**: Contains Jupyter notebooks for EDA and model experimentation.
+- **src/**: Source code for the project, including pipelines and utility scripts.
+- **templates/**: HTML templates for the web interface.
+- **artifacts/**: Stores intermediate and final outputs like datasets and models.
+- **README.md**: Project documentation.
+- **requirements.txt**: Python dependencies.
 
-- **.gitignore**: Specifies files and directories to exclude from version control.
-- **README.md**: Provides an overview of the project, including structure, installation, usage, and contribution guidelines.
-- **requirements.txt**: Lists all Python dependencies with versions.
-- **setup.py**: Contains package configuration and installation instructions.
+---
 
-#### Source Code
+## Workflow
 
-- **src**: Main directory containing project source code.
-- **.DS_Store**: macOS directory metadata file (auto-generated).
+### 1. Data Ingestion
+- Reads raw data from CSV files.
+- Splits the data into training and testing sets.
+- Saves the processed datasets in the `artifacts/` directory.
 
-#### Virtual Environment
+### 2. Exploratory Data Analysis (EDA)
+- Conducts data checks, visualizations, and statistical analysis.
+- Identifies patterns, trends, and outliers in the dataset.
 
-- **venv**: Python virtual environment directory (excluded via .gitignore).
+### 3. Data Transformation
+- Handles missing values, encodes categorical variables, and scales numerical features.
+- Prepares the data for model training.
 
-## Getting Started
+### 4. Model Training
+- Trains machine learning models using the processed data.
+- Evaluates models based on performance metrics and selects the best one.
+
+### 5. Deployment
+- Deploys the trained model using a web interface for real-time predictions.
+
+---
+
+## Usage
 
 ### Installation
-
-To set up the project, follow these steps:
 
 1. Clone the repository:
     ```sh
@@ -54,34 +69,41 @@ To set up the project, follow these steps:
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
-3. Install the dependencies:
+3. Install dependencies:
     ```sh
     pip install -r requirements.txt
     ```
 
-4. Install the package:
+### Running the Project
+
+1. **Data Ingestion**:
     ```sh
-    python setup.py install
+    python src/components/data_ingestion.py
     ```
 
-### Usage
+2. **Model Training**:
+    ```sh
+    python src/pipelines/training_pipeline.py
+    ```
 
-To use the project modules, import them as follows:
-```python
-from src import *
-```
+3. **Web Interface**:
+    Start the Flask application to make predictions:
+    ```sh
+    python app.py
+    ```
 
-## Use Cases & Applications
-
-This project can be used for various machine learning tasks, including but not limited to:
-
-- Data preprocessing and cleaning
-- Model training and evaluation
-- Model deployment and monitoring
+---
 
 ## Dataset Information
 
-If applicable, provide details about the datasets used in the project, including sources, preprocessing steps, and any transformations applied.
+- **gender**: Male/Female
+- **race/ethnicity**: Group A, B, C, D, E
+- **parental level of education**: Bachelor's, Master's, etc.
+- **lunch**: Standard or free/reduced
+- **test preparation course**: Completed or not
+- **math score, reading score, writing score**: Scores out of 100
+
+---
 
 ## Contribution Guidelines
 
@@ -89,14 +111,10 @@ If applicable, provide details about the datasets used in the project, including
 2. Create feature branches.
 3. Submit pull requests for review.
 
-## Maintenance
+---
 
-The project follows semantic versioning. Check `requirements.txt` for dependency updates.
+## Future Enhancements
 
-## Virtual Environment
-
-The `venv` directory contains the Python virtual environment for the project. It is excluded from version control via `.gitignore`.
-
-## Dynamic Documentation
-
-Ensure the documentation is updated dynamically as the project evolves. Add new sections or update existing ones as necessary to reflect changes in the project structure, dependencies, or functionality.
+- Add more advanced models and hyperparameter tuning.
+- Implement a CI/CD pipeline for automated testing and deployment.
+- Extend the web interface with additional features like data visualization.
